@@ -7,5 +7,5 @@ data class MatchList(
     val mt: Int,
     val s: Int,
     val t1: TeamOne,
-    val t2: TeamTwo
+    val t2: TeamOne
 )

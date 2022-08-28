@@ -8,7 +8,7 @@ import retrofit2.http.GET
  */
 interface KickbaseServiceApi {
 
-    // get list of bundelisga matches from api
+    // get list of bundelisga football matches from api
     @GET("competitions/2/matches")
     suspend fun fetchMatches() : CompetitionsModel
 }

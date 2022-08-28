@@ -5,6 +5,9 @@
       <map>
         <entry key="..\:/android/Android Others/test/Germany/Kick base/kick base source code/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/android/Android Others/test/Germany/Kick base/kick base source code/app/src/main/res/layout/content_main.xml" value="0.22" />
+        <entry key="..\:/android/Android Others/test/Germany/Kick base/kick base source code/app/src/main/res/layout/fragment_competitions_list.xml" value="0.19947916666666668" />
+        <entry key="..\:/android/Android Others/test/Germany/Kick base/kick base source code/app/src/main/res/layout/fragment_first.xml" value="0.19947916666666668" />
+        <entry key="..\:/android/Android Others/test/Germany/Kick base/kick base source code/app/src/main/res/layout/single_competition_item.xml" value="0.22" />
       </map>
     </option>
   </component>
