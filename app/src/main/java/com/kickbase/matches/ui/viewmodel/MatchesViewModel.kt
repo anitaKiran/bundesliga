@@ -33,7 +33,6 @@ class MatchesViewModel @Inject constructor(private val repository: MatchesReposi
     }
 
     fun fetchCompetitionsList() {
-        Log.e("Viewmodel","fetchmatches")
         repository().onEach {
             when (it) {
                 is Resource.Loading -> {
@@ -49,8 +48,5 @@ class MatchesViewModel @Inject constructor(private val repository: MatchesReposi
                 }
             }
         }.launchIn(viewModelScope)
-
-
     }
-
 }

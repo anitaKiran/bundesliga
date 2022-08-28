@@ -1,5 +1,6 @@
 package com.kickbase.matches.di
 
+import com.kickbase.matches.BuildConfig
 import com.kickbase.matches.data.network.KickbaseServiceApi
 import com.kickbase.matches.utils.AppConstants
 import dagger.Module
@@ -44,7 +45,7 @@ object NetworkModule {
     @Singleton
     fun providesRetrofitBuilder(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl(AppConstants.BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

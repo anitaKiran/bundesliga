@@ -2,7 +2,7 @@ package com.kickbase.matches.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class TeamOne(
+data class TeamInfo(
     val g: Int,
     @SerializedName("i")
     val clubId: String,

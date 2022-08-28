@@ -20,26 +20,100 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_t1_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="@dimen/_25sdp"
-                android:fitsSystemWindows="true"
-                android:scaleType="fitXY"
+                android:layout_marginStart="@dimen/_15sdp"
                 android:src="@drawable/ic_logo"/>
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_del"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/t1_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/img_t1_logo"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/ic_logo"
+                android:fontFamily="@font/bison_bold"
+                android:text="FCB"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/_20ssp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/t1_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/t1_name"
+                app:layout_constraintStart_toEndOf="@id/img_t1_logo"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/bison_bold"
+                android:text="24.190"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/_12ssp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="18:30"
+                android:textColor="@color/text_dark"
+                android:fontFamily="@font/bison_bold"
+                android:textSize="@dimen/_30ssp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_datetime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="12 Marz"
+                android:textColor="@color/text_light"
+                android:fontFamily="@font/bison_bold"
+                android:textSize="@dimen/_12ssp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/t2_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/tv_time"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/bison_bold"
+                android:text="FCB"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/_20ssp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/t2_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/tv_time"
+                app:layout_constraintTop_toBottomOf="@+id/t2_name"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:fontFamily="@font/bison_bold"
+                android:text="24.190"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/_12ssp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_t2_logo"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:src="@drawable/ic_logo"/>
 
             <View
                 android:id="@+id/view"
@@ -49,7 +123,7 @@
                 android:background="@color/app_bg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_del" />
+                app:layout_constraintTop_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

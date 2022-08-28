@@ -1,15 +1,18 @@
 package com.kickbase.matches.ui.view.adapter
 
 import android.content.Context
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
+import com.kickbase.matches.BuildConfig
 import com.kickbase.matches.data.model.MatchList
 import com.kickbase.matches.databinding.SingleCompetitionItemBinding
+import com.kickbase.matches.utils.DateSettings
 
 /**
  * Created by Anita Kiran on 8/28/2022.
@@ -23,17 +26,25 @@ class MatchAdapter() : ListAdapter<MatchList, MatchAdapter.MatchViewHolder>(DIFF
 
         fun bind(matchItem: MatchList) = with(binding) {
             // set name of the teams
-            //t1Name.text = matchItem.t1.clubShortName
-            //t2Name.text = matchItem.t2.clubShortName
+            t1Name.text = matchItem.t1.clubShortName
+            t2Name.text = matchItem.t2.clubShortName
             // set logo of teams 1
-            //Log.e("Imageurl", BuildConfig.BASE_IMAGE_PATH +matchItem.t1.clubId +"/9")
-            Glide.with(context).load("https://kickbase.b-cdn.net/testpool/teams_svg_v2/30.svg")
-               .into(imgT1Logo)
+            GlideToVectorYou
+                .init()
+                .with(context)
+                .load(Uri.parse(BuildConfig.BASE_IMAGE_PATH +matchItem.t1.clubId +"/9"), imgT1Logo)
 
-//            SvgLoader.pluck()
-//                .with(this)
-//                .setPlaceHolder(R.mipmap.ic_launcher, R.mipmap.ic_launcher)
-//                .load(uri, image);
+            // set logo of team 2
+            GlideToVectorYou
+                .init()
+                .with(context)
+                .load(Uri.parse(BuildConfig.BASE_IMAGE_PATH +matchItem.t2.clubId +"/9"), imgT2Logo)
+
+            // set date and month
+            tvDatetime.text = DateSettings.getDateAndMonth(matchItem.dateOfMatch)
+
+            // set time of match
+            tvTime.text = DateSettings.getTimeOfMatch(matchItem.dateOfMatch)
         }
     }
 
