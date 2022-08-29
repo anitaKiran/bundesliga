@@ -1,7 +1,6 @@
 package com.kickbase.matches.ui.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
+import com.kickbase.matches.data.model.MatchList
 import com.kickbase.matches.databinding.FragmentCompetitionsListBinding
 import com.kickbase.matches.ui.view.adapter.MatchAdapter
 import com.kickbase.matches.ui.viewmodel.MatchesViewModel
+import com.kickbase.matches.utils.DateSettings
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,23 +44,28 @@ class MatchListFragment : Fragment() {
         lifecycle.coroutineScope.launchWhenCreated {
             viewModel.competitions.collect { viewEventResponses->
                 if (viewEventResponses.isLoading) {
-                    Log.e("Fragment ", "loading")
-
                    // binding.progress.visibility = View.VISIBLE
                 }
                 if (viewEventResponses.error.isNotBlank()) {
-                    Log.e("Fragment ", "error")
-
                     //binding.progress.visibility = View.GONE
                     Toast.makeText(requireContext(), viewEventResponses.error, Toast.LENGTH_SHORT).show()
                 }
                 viewEventResponses.data?.let {
-                    Log.e("Fragment ", "Result")
                     //binding.progress.visibility = View.GONE
+                    // set day of week
+                    setWeekDay(it.matchList)
                     // set recyclerview data
                     matchAdapter.submitList(it.matchList)
                 }
             }
+        }
+    }
+
+    // getting the day of week from the date of match and setting in the textview above recyclerview
+    private fun setWeekDay(data: List<MatchList>){
+        if(data.size > 0){
+            val weekday= DateSettings.getWeekDay(data.get(0).dateOfMatch)
+            binding.tvWeekDay.text = weekday
         }
     }
 
