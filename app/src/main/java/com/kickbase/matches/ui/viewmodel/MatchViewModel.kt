@@ -1,6 +1,5 @@
 package com.kickbase.matches.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kickbase.matches.data.repository.MatchRepository

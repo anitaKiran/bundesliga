@@ -7,7 +7,7 @@ import java.util.*
  * Created by Anita Kiran on 8/29/2022.
  */
 
-// This class have methods for getting day, month, week day and time from the date provided
+// This class have methods for converting day, month, week day and time from the date provided
 object DateSettings {
 
     //returns date and month

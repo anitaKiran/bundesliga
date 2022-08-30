@@ -1,11 +1,9 @@
 package com.kickbase.matches.data.repository
 
-import android.util.Log
 import com.kickbase.matches.data.model.CompetitionsModel
 import com.kickbase.matches.data.network.KickbaseServiceApi
 import com.kickbase.matches.utils.AppConstants
 import com.kickbase.matches.utils.Resource
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
@@ -22,9 +20,9 @@ class MatchRepository @Inject constructor(private val apiService: KickbaseServic
             emit(Resource.Loading())
             // fetch list of football matches from api
             val response = apiService.fetchMatches()
-            if (response != null) {
-                    emit(Resource.Success(response))
-            }
+            if (response != null)
+                emit(Resource.Success(response))
+
         } catch (e: HttpException) {
             emit(Resource.Error(message = e.localizedMessage ?: AppConstants.UNKNOWN_ERROR_OCCURRED))
         } catch (e: IOException) {
