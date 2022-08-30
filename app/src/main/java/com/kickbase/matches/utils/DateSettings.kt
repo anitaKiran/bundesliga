@@ -15,7 +15,7 @@ object DateSettings {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
         val date = formatter.parse(dateString)
         val output = DateTimeFormatter.ofPattern("dd.MMM", Locale.GERMAN).format(date)
-        return output
+        return output.dropLast(1) // remove full stop in the end of month
     }
 
     // return time of the match

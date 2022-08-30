@@ -2,7 +2,6 @@ package com.kickbase.matches.di
 
 import com.kickbase.matches.BuildConfig
 import com.kickbase.matches.data.network.KickbaseServiceApi
-import com.kickbase.matches.utils.AppConstants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

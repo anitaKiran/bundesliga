@@ -19,7 +19,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.FootballMatches.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.FootballMatches.AppBarOverlay" parent="Theme.AppCompat.Light.NoActionBar" />
 
-    <style name="Theme.FootballMatches.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.FootballMatches.PopupOverlay" parent="Theme.AppCompat.Light.NoActionBar" />
 </resources>

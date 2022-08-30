@@ -11,7 +11,7 @@ import androidx.lifecycle.coroutineScope
 import com.kickbase.matches.data.model.MatchList
 import com.kickbase.matches.databinding.FragmentCompetitionsListBinding
 import com.kickbase.matches.ui.view.adapter.MatchAdapter
-import com.kickbase.matches.ui.viewmodel.MatchesViewModel
+import com.kickbase.matches.ui.viewmodel.MatchViewModel
 import com.kickbase.matches.utils.DateSettings
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MatchListFragment : Fragment() {
     private var _binding: FragmentCompetitionsListBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: MatchesViewModel by viewModels()
+    private val viewModel: MatchViewModel by viewModels()
     private val matchAdapter = MatchAdapter()
 
     override fun onCreateView(
@@ -27,31 +27,31 @@ class MatchListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCompetitionsListBinding.inflate(inflater, container, false)
-
         setupUI()
         observeCompetitions()
-
         return binding.root
     }
 
+    // setting  views
     private fun setupUI(){
         binding.recyclerview.apply {
             this.adapter = matchAdapter
         }
     }
 
+    // observe changes in the data from the api call
     private fun observeCompetitions(){
         lifecycle.coroutineScope.launchWhenCreated {
             viewModel.competitions.collect { viewEventResponses->
-                if (viewEventResponses.isLoading) {
-                   // binding.progress.visibility = View.VISIBLE
-                }
+                if (viewEventResponses.isLoading)
+                    binding.progress.visibility = View.VISIBLE
+
                 if (viewEventResponses.error.isNotBlank()) {
-                    //binding.progress.visibility = View.GONE
-                    Toast.makeText(requireContext(), viewEventResponses.error, Toast.LENGTH_SHORT).show()
+                    binding.progress.visibility = View.GONE
+                    Toast.makeText(requireContext(), viewEventResponses.error, Toast.LENGTH_LONG).show()
                 }
                 viewEventResponses.data?.let {
-                    //binding.progress.visibility = View.GONE
+                    binding.progress.visibility = View.GONE
                     // set day of week
                     setWeekDay(it.matchList)
                     // set recyclerview data

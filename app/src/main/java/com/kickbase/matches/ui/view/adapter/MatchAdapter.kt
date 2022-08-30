@@ -2,7 +2,6 @@ package com.kickbase.matches.ui.view.adapter
 
 import android.content.Context
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,8 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 import com.kickbase.matches.BuildConfig
+import com.kickbase.matches.R
 import com.kickbase.matches.data.model.MatchList
 import com.kickbase.matches.databinding.SingleCompetitionItemBinding
+import com.kickbase.matches.utils.AppConstants
 import com.kickbase.matches.utils.DateSettings
 
 /**
@@ -28,6 +29,10 @@ class MatchAdapter() : ListAdapter<MatchList, MatchAdapter.MatchViewHolder>(DIFF
             // set name of the teams
             t1Name.text = matchItem.t1.clubShortName
             t2Name.text = matchItem.t2.clubShortName
+            // setting goals of teams
+            t1Goals.text = matchItem.t1.goals.toString()
+            t2Goals.text = matchItem.t2.goals.toString()
+
             // set logo of teams 1
             GlideToVectorYou
                 .init()
@@ -41,10 +46,27 @@ class MatchAdapter() : ListAdapter<MatchList, MatchAdapter.MatchViewHolder>(DIFF
                 .load(Uri.parse(BuildConfig.BASE_IMAGE_PATH +matchItem.t2.clubId +"/9"), imgT2Logo)
 
             // set date and month
-            tvDatetime.text = DateSettings.getDateAndMonth(matchItem.dateOfMatch)
+            tvDateMonth.text = DateSettings.getDateAndMonth(matchItem.dateOfMatch)
 
-            // set time of match
-            tvTime.text = DateSettings.getTimeOfMatch(matchItem.dateOfMatch)
+            // set status of matches
+            // match status started and none -- show only date and time
+            if(matchItem.statusOfMatch == AppConstants.MATCH_STATUS_NONE ||
+                    matchItem.statusOfMatch == AppConstants.MATCH_STATUS_STARTED){
+                // set time of match
+                tvTime.text = DateSettings.getTimeOfMatch(matchItem.dateOfMatch)
+            }
+
+            // match status 'FINISHED'-- set finished in textview
+            else if(matchItem.statusOfMatch == AppConstants.MATCH_STATUS_FINISHED ||
+                matchItem.statusOfMatch == AppConstants.MATCH_STATUS_SECOND_HALF_STARTED){
+                // set finished
+                tvTime.setText(R.string.match_finished)
+            }
+
+            // match status 'Postponed'-- set postponed in textview
+            else if(matchItem.statusOfMatch == AppConstants.MATCH_STATUS_POSTPONED){
+                tvTime.setText(R.string.match_postponed)
+            }
         }
     }
 
